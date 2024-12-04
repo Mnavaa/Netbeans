@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
+import Model.Aposta;
+import Model.ApostaService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -49,6 +51,10 @@ public class ApuestaServlet extends HttpServlet  {
 public void init()throws ServletException{
       List<Aposta> listaAposta = new ArrayList<>();
         getServletContext().setAttribute("listaAposta", listaAposta);
+        int ContadorID= 0;
+        getServletContext().setAttribute("ContadorID", listaAposta);
+        apostaService = new ApostaService();
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -7,12 +7,19 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <head
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Apuestas DWEC</title>
     </head>
     <body>
+        <h1> Apuesta de los fifes</h1>
         <form action="apuestaServlet" method="post">
-            Usuari: <input type="number" name="ID"/><br/>
-            Partit: <input type="text" name="nombre" /><br/>
+                    <!--ID usuario-->
+            <label for="ID">Usuari:</label>
+            <input type ="number" id="ID" name="ID" required><br><br>
+                     <!--Nombre del partido-->
+            <label for="nombre">Partit:</label>
+            <input type ="text" id="nombre" name="nombre" required><br><br>
+                      <!--Opciones del resultado del partido :D-->
+                     
             Resultat: <input type="radio" id="opcio1" name="equipo" value="equipo1">Sevilla
             <input type="radio" id="opcio2" name="equipo" value="equipo2">  Madrid<br/>
             Datat: <input type="date" name="fecha_partido" id="datetime" /><br/>

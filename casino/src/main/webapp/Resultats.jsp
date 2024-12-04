@@ -19,11 +19,14 @@
             <label for="nombre">Partit:</label>
             <input type ="text" id="nombre" name="nombre" required><br><br>
                       <!--Opciones del resultado del partido :D-->
-                     
-            Resultat: <input type="radio" id="opcio1" name="equipo" value="equipo1">Sevilla
-            <input type="radio" id="opcio2" name="equipo" value="equipo2">  Madrid<br/>
-            Datat: <input type="date" name="fecha_partido" id="datetime" /><br/>
-            Quantitat apostada: <input type="number" name="apuesta" /><br/>
+            <label for="equipo">Resultat:</label><br>
+            <input type ="radio" id="opcio1" name="equipo" value="equipo1" required>
+            <label for="opcio1">Barça</label><br>
+            
+            <input type ="radio" id="opcio2" name="equipo" value="equipo2" required>
+            <label for="opcio2">Madrird</label><br>><br>
+            
+            
             <input type="submit" name="submit" value="Enviar Apuesta"/>
         </form>
     </body>

@@ -32,7 +32,11 @@
              <input type ="date" id="datetime" name="fecha_partido" required><br><br>
              
                             <!--Cantidad Apostada-->
-            <input type="submit" name="submit" value="Enviar Apuesta"/>
+            <label type="apuesta">Quantitat apostada:</label>
+            
+                             <!--Boton para enviar apuesta-->
+            <input type ="number" id="apuesta" name="apuesta" required><br><br>
+            <input type="submit" name="submit" value="Enviar Apuesta">
         </form>
     </body>
 </html>

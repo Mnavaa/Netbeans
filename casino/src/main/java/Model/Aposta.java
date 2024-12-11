@@ -17,5 +17,11 @@ public class Aposta {
     private Date datapartit;
     private double apostaEconomica;
     
+    public Aposta(){} //Constructor buit
+    
+    public Aposta(int id, String nomUsuari, String enfrontament, String resultat, Date datapartit, double apostaEconomica){
+        
+    }
+    
     
 }

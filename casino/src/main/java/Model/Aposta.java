@@ -67,5 +67,14 @@ public class Aposta {
         this.apostaEconomica = apostaEconomica;
     }
     @Override
-    public S
+    public String toString(){
+        return "Aposta{"+
+                "id=" + id +
+                ",nomUsuari=" +nomUsuari + '\'' + 
+                ",enfrontament=" + enfrontament +'\'' +
+                ",resultat=" + resultat + '\''+
+                ",dataPartit="+ dataPartit +
+                ",apostaEconomica="+ apostaEconomica  +    
+                        '}';
+    }
 }   

@@ -14,14 +14,20 @@ public class Aposta {
     private String nomUsuari;
     private String enfrontament;
     private String resultat;
-    private Date datapartit;
+    private Date dataPartit;
     private double apostaEconomica;
     
     public Aposta(){} //Constructor buit
     
     public Aposta(int id, String nomUsuari, String enfrontament, String resultat, Date datapartit, double apostaEconomica){
-        
+        this.id = id;
+        this.nomUsuari = nomUsuari;
+        this.enfrontament = enfrontament;
+        this.resultat = resultat;
+        this.dataPartit = dataPartit;
+        this.apostaEconomica = apostaEconomica;
     }
+    
     
     
 }

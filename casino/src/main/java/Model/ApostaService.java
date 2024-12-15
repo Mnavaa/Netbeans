@@ -36,6 +36,10 @@ public class ApostaService {
                 return true;
             }
         }
-    }  
+        return false;
+    }
+    public boolean esborrarAposta(int id){
+        return apostes.removeIf(aposta -> aposta.getId()==id );
+    }
     
 }

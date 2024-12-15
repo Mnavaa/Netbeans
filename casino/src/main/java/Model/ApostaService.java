@@ -41,5 +41,10 @@ public class ApostaService {
     public boolean esborrarAposta(int id){
         return apostes.removeIf(aposta -> aposta.getId()==id );
     }
+    public List <Aposta>filtrarPerNomUsari(String nomUsuari){
+        return apostes.stream()
+                .filter(aposta-> aposta.getNomUsuari().equalsIgnoreCase(nomUsuari))
+                .collect(Collectors.toList());
+    }
     
 }

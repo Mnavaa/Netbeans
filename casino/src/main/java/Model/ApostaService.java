@@ -29,6 +29,13 @@ public class ApostaService {
                 .orElse(null);
     }
     
-           
+    public boolean modificarAposta(Aposta apostaActualizada){
+        for (int i =0; i < apostes.size(); i++){
+            if (apostes.get(i).getId()==apostaActualizada.getId()){
+                apostes.set(i, apostaActualizada);
+                return true;
+            }
+        }
+    }  
     
 }

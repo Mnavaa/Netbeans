@@ -130,6 +130,20 @@ public class ApostaServlet extends HttpServlet  {
 
         response.sendRedirect("apostes");
     }
+       rivate void modificarAposta(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        int idAposta = Integer.parseInt(request.getParameter("idAposta"));
+        String nomUsuari = request.getParameter("nomUsuari");
+        String enfrontament = request.getParameter("enfrontament");
+        String resultatAposta = request.getParameter("resultatAposta");
+        LocalDate dataPartit = LocalDate.parse(request.getParameter("dataPartit"));
+        double quantitatAposta = Double.parseDouble(request.getParameter("quantitatAposta"));
+
+        Aposta apostaActualitzada = new Aposta(nomUsuari, idAposta, enfrontament, resultatAposta, java.sql.Date.valueOf(dataPartit), quantitatAposta);
+        apostaService.modificarAposta(apostaActualitzada);
+
+        response.sendRedirect("apostes");
+    }
+
 
 
 }

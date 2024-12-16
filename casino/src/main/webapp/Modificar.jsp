@@ -19,6 +19,10 @@
     %>
         <form method="post" action="apostes">
             <input type="hidden" name="accio" value="modificar">
-            <input type="hidden" name="idAposta" value="<%= aposta.getIdAposta() %>">
+            <input type="hidden" name="idAposta" value="<%= aposta.getIdAposta()
+  %>">
+            <label for="nomUsuari">Nom d'Usuari:</label><br>
+            <input type="text" id="nomUsuari" name="nomUsuari" value="<%= aposta.getNomUsuari() %>" required><br>
+
     </body>
 </html>

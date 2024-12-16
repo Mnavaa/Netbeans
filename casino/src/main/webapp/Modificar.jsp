@@ -30,7 +30,14 @@
             <label for="resultatAposta">Resultat:</label><br>
             <input type="text" id="resultatAposta" name="resultatAposta" value="<%= aposta.getResultatAposta() %>" required><br>
 
-            
+            <label for="dataPartit">Data del Partit:</label><br>
+            <input type="date" id="dataPartit" name="dataPartit" 
+                   value="<%= aposta.getDataPartit().toString() %>" required><br>
+
+            <label for="quantitatAposta">Quantitat Apostada:</label><br>
+            <input type="number" id="quantitatAposta" name="quantitatAposta" step="0.01" 
+                   value="<%= aposta.getQuantitatApostada() %>" required><br><br>
+
             
             
         </body>

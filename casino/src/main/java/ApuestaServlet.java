@@ -95,6 +95,13 @@ public void init()throws ServletException{
             getServletContext().setAttribute("ContadorID", ContadorID+1);
            // ApostaService.addAposta(listaAposta, ContadorID, request);
            // getServletContext().setAttribuye("ContadorID");
+           
+            request.setAttribute("apuestas", listaApuestas);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("resultat.jsp");
+            dispatcher.forward(request, response);
+        }else if("Borrar".equals(accion)){
+            String ID = request.getParameter("ID");
+            
         }
         
     }

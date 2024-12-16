@@ -24,5 +24,14 @@
             <label for="nomUsuari">Nom d'Usuari:</label><br>
             <input type="text" id="nomUsuari" name="nomUsuari" value="<%= aposta.getNomUsuari() %>" required><br>
 
-    </body>
+             <label for="enfrontament">Enfrontament:</label><br>
+            <input type="text" id="enfrontament" name="enfrontament" value="<%= aposta.getEnfrontament() %>" required><br>
+            
+            <label for="resultatAposta">Resultat:</label><br>
+            <input type="text" id="resultatAposta" name="resultatAposta" value="<%= aposta.getResultatAposta() %>" required><br>
+
+            
+            
+            
+        </body>
 </html>

@@ -117,6 +117,14 @@ public void init()throws ServletException{
         apuestaService.Modificar(listaApuestas, request);
         request.setAttribute("apuestas",  listaApuestas);
             RequestDispatcher dispatcher = request.getRequestDispatcher("EditarApuesta.jsp");
+            dispatcher.forward(request, response);
+            
+          }else if("Detalles".equals(accion)){
+        List<Apuesta> listaApuestas = (ArrayList<Apuesta>) getServletContext().getAttribute("listaApuestas");
+        apuestaService.Mostrar(listaApuestas, request);
+        request.setAttribute("apuestas",  listaApuestas);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("Detallesapuesta.jsp");
+            dispatcher.forward(request, response);
     }
 
 }

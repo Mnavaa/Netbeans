@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(urlPatterns = {"/ApuestaServlet"})
 public class ApuestaServlet extends HttpServlet  {
+    private ApostaService apostaService;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -49,10 +50,11 @@ public class ApuestaServlet extends HttpServlet  {
     }
 @Override
 public void init()throws ServletException{
+    
       List<Aposta> listaAposta = new ArrayList<>();
-        getServletContext().setAttribute("listaAposta", listaAposta);
-        int ContadorID= 0;
-        getServletContext().setAttribute("ContadorID", listaAposta);
+      int ContadorID=0;
+      getServletContext().setAttribute("ContadorID", ContadorID;
+      getServletContext().setAttribute("listaAposta", listaAposta);
         apostaService = new ApostaService();
         
     }
@@ -85,8 +87,14 @@ public void init()throws ServletException{
             throws ServletException, IOException {
        // processRequest(request, response);
         String accion = request.getParameter("submit");
+        
         if("Enviar Apuesta".equals(accion)){
             List<Aposta> listaAposta = (ArrayList<Aposta>) getServletContext().getAttribute("listaAposta");
+            int ContadorID=(int) (int) getServletContext().getAttribute("ContadorID");
+            apuestaService.addApuesta(listaApuestas, ContadorID, request);
+            getServletContext().setAttribute("ContadorID", ContadorID+1);
+           // ApostaService.addAposta(listaAposta, ContadorID, request);
+           // getServletContext().setAttribuye("ContadorID");
         }
         
     }

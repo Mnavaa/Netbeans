@@ -49,8 +49,23 @@
                 </td>
             </tr>
         <% 
-            
-           
+             }
+            } else { 
+        %>
+            <tr>
+                <td colspan="4">No hi ha apostes disponibles.</td>
+            </tr>
+        <% } %>
+         </tbody>
+    </table>
+           <!-- Formulari per crear una nova aposta -->
+    <h2>Crear una Nova Aposta</h2>
+    <form method="post" action="apostes">
+        <input type="hidden" name="accio" value="crear">
+        <label for="idAposta">ID Aposta:</label>
+        <input type="number" id="idAposta" name="idAposta" required><br>
+        <label for="nomUsuari">Nom d'Usuari:</label>
+        <input type="text" id="nomUsuari" name="nomUsuari" required><br>
         
     </body>
 </html>

@@ -3,8 +3,11 @@
     Created on : 22 de nov. 2024, 17:02:04
     Author     : isard
 --%>
-
+<%@ page import="java.util.List" %>
+<%@ page import="Model.Aposta" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="Model.Aposta" %>
+
 <head
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Llistat d'Apostes</title>
@@ -38,7 +41,7 @@
                 <td><%= aposta.getNomUsuari() %></td>
                 <td><%= aposta.getEnfrontament() %></td>
                 <td><%= aposta.getResultatAposta() %></td>
-                <td>
+                <td>    
                     <a href="apostes?accio=detall&idAposta=<%= aposta.getIdAposta() %>">Detall</a> |
                     <a href="apostes?accio=modificar&idAposta=<%= aposta.getIdAposta() %>">Modificar</a> |
                     <form method="post" action="apostes" style="display:inline;">
@@ -66,6 +69,17 @@
         <input type="number" id="idAposta" name="idAposta" required><br>
         <label for="nomUsuari">Nom d'Usuari:</label>
         <input type="text" id="nomUsuari" name="nomUsuari" required><br>
+        <input type="text" id="nomUsuari" name="nomUsuari" required><br>
+        <label for="enfrontament">Enfrontament:</label>
+        <input type="text" id="enfrontament" name="enfrontament" required><br>
+        <label for="resultatAposta">Resultat:</label>
+        <input type="text" id="resultatAposta" name="resultatAposta" required><br>
+        <label for="dataPartit">Data del Partit:</label>
+        <input type="date" id="dataPartit" name="dataPartit" required><br>
+        <label for="quantitatAposta">Quantitat Apostada:</label>
+        <input type="number" id="quantitatAposta" name="quantitatAposta" step="0.01" required><br>
+        <button type="submit">Crear</button>
+    </form>
         
     </body>
 </html>

@@ -30,6 +30,27 @@
         </thead>
         <tbody>
         <% 
+            List<Aposta> apostes = (List<Aposta>) request.getAttribute("apostes");
+            if (apostes != null && !apostes.isEmpty()) {
+                for (Aposta aposta : apostes) { 
+        %>
+              <tr>
+                <td><%= aposta.getNomUsuari() %></td>
+                <td><%= aposta.getEnfrontament() %></td>
+                <td><%= aposta.getResultatAposta() %></td>
+                <td>
+                    <a href="apostes?accio=detall&idAposta=<%= aposta.getIdAposta() %>">Detall</a> |
+                    <a href="apostes?accio=modificar&idAposta=<%= aposta.getIdAposta() %>">Modificar</a> |
+                    <form method="post" action="apostes" style="display:inline;">
+                        <input type="hidden" name="accio" value="esborrar">
+                        <input type="hidden" name="idAposta" value="<%= aposta.getIdAposta() %>">
+                        <button type="submit">Esborrar</button>
+                    </form>
+                </td>
+            </tr>
+        <% 
+            
+           
         
     </body>
 </html>

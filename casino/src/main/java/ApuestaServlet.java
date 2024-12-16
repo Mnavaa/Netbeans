@@ -102,6 +102,11 @@ public void init()throws ServletException{
         }else if("Borrar".equals(accion)){
             String ID = request.getParameter("ID");
             
+            List<Apuesta> listaApuestas = (ArrayList<Apuesta>) getServletContext().getAttribute("listaApuestas");
+            apuestaService.Borrar(listaApuestas, request);
+            request.setAttribute("apuestas",  listaApuestas);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("resultat.jsp");
+            dispatcher.forward(request, response);
         }
         
     }

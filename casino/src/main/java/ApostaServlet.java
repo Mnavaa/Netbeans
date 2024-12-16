@@ -117,6 +117,19 @@ public class ApostaServlet extends HttpServlet  {
         RequestDispatcher dispatcher = request.getRequestDispatcher("apostes.jsp");
         dispatcher.forward(request, response);
     }
+       private void crearAposta(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        int idAposta = Integer.parseInt(request.getParameter("idAposta"));
+        String nomUsuari = request.getParameter("nomUsuari");
+        String enfrontament = request.getParameter("enfrontament");
+        String resultatAposta = request.getParameter("resultatAposta");
+        LocalDate dataPartit = LocalDate.parse(request.getParameter("dataPartit"));
+        double quantitatAposta = Double.parseDouble(request.getParameter("quantitatAposta"));
+
+        Aposta novaAposta = new Aposta(nomUsuari, idAposta, enfrontament, resultatAposta, java.sql.Date.valueOf(dataPartit), quantitatAposta);
+        apostaService.afegirAposta(novaAposta);
+
+        response.sendRedirect("apostes");
+    }
 
 
 }

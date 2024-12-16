@@ -37,7 +37,18 @@
             <label for="quantitatAposta">Quantitat Apostada:</label><br>
             <input type="number" id="quantitatAposta" name="quantitatAposta" step="0.01" 
                    value="<%= aposta.getQuantitatApostada() %>" required><br><br>
+                   <button type="submit">Guardar Canvis</button>
+        </form>
+    <%
+        } else {
+    %>
+        <p>No s'ha trobat l'aposta especificada.</p>
+    <%
+        }
+    %>
 
+    <br>
+    <a href="apostes">Tornar al Llistat</a>
             
             
         </body>

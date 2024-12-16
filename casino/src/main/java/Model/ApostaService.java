@@ -6,6 +6,7 @@ package Model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
       
 
 /**
@@ -13,7 +14,7 @@ import java.util.stream.Collectors;
  * @author isard
  */
 public class ApostaService {
-    private final List<Aposta> apostes = new Arraylist<>();
+    private final List<Aposta> apostes = new ArrayList<>();
     
     public void afegirAposta(Aposta aposta){
         apostes.add(aposta); //afegir una aposta
@@ -22,24 +23,24 @@ public class ApostaService {
     public List<Aposta>ObtenirTotesLesApostes(){
         return new ArrayList<>(apostes); //llista totes les llistes
     }
-    public Aposta ObtenirApostaPerId(int id){
+    public Aposta ObtenirApostaPerId(int idAposta){
         return apostes.stream()
-                .filter(aposta -> aposta.getId()==id)
+                .filter(aposta -> aposta.getIdAposta()==idAposta)
                 .findFirst()
                 .orElse(null);
     }
     
     public boolean modificarAposta(Aposta apostaActualizada){
         for (int i =0; i < apostes.size(); i++){
-            if (apostes.get(i).getId()==apostaActualizada.getId()){
+            if (apostes.get(i).getIdAposta()==apostaActualizada.getIdAposta()){
                 apostes.set(i, apostaActualizada);
                 return true;
             }
         }
         return false;
     }
-    public boolean esborrarAposta(int id){
-        return apostes.removeIf(aposta -> aposta.getId()==id );
+    public boolean esborrarAposta(int idAposta){
+        return apostes.removeIf(aposta -> aposta.getIdAposta()==idAposta);
     }
     public List <Aposta>filtrarPerNomUsari(String nomUsuari){
         return apostes.stream()

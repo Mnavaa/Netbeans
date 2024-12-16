@@ -12,28 +12,26 @@ import java.util.Date;
  * @author isard
  */
 public class Aposta {
-    private int id;
     private String nomUsuari;
-    private String enfrontament;
-    private String resultat;
     private Date dataPartit;
-    private double apostaEconomica;
-    
-    public Aposta(){} //Constructor buit
-    
-    public Aposta(int id, String nomUsuari, String enfrontament, String resultat, Date dataPartit, double apostaEconomica){
-        this.id = id;
+    private double quantitatAposta;
+    private String enfrontament;
+    private String resultatAposta;
+    private int idAposta;
+    //Contrutor
+     public Aposta(String nomUsuari, int idAposta, String enfrontament, String resultatAposta, Date dataPartit, double quantitatAposta) {
+       this.idAposta = idAposta;
         this.nomUsuari = nomUsuari;
         this.enfrontament = enfrontament;
-        this.resultat = resultat;
+        this.resultatAposta = resultatAposta;
         this.dataPartit = dataPartit;
-        this.apostaEconomica = apostaEconomica;
+        this.quantitatAposta = quantitatAposta;
     }
-    public int getId(){
-        return id;
+    public int getIdAposta(){
+        return idAposta;
     }
-    public void setId(int id){
-        this.id = id;
+    public void setIdAposta(int idAposta){
+        this.idAposta = idAposta;
     }
     public String getNomUsuari(){
         return nomUsuari;
@@ -42,17 +40,17 @@ public class Aposta {
     public void setNomUsuari(String nomUsuari){
         this.nomUsuari = nomUsuari;
     }
-    public String getEnfrotament(){
+    public String getEnfrontament(){
         return enfrontament;
     }
     public void setEnfrontament(String enfrontament){
         this.enfrontament = enfrontament;
     }
-    public String setResultat(){
-        return resultat;
+    public String setResultatAposta(){
+        return resultatAposta;
     }
-    public void setResultat(String resultat){
-       this.resultat = resultat; 
+    public void setResultatAposta(String resultatAposta){
+       this.resultatAposta = resultatAposta; 
     }
     public Date getDataPartit(){
         return dataPartit;
@@ -60,21 +58,21 @@ public class Aposta {
     public void setDataPartit(Date dataPartit){
         this.dataPartit = dataPartit;
     }
-    public double getApostaEconomica(){
-        return apostaEconomica;
+     public double getQuantitatApostada() {
+        return quantitatAposta;
     }
-    public void setApostaEconomica(double apostaEconomica){
-        this.apostaEconomica = apostaEconomica;
+
+    public void setQuantitatApostada(double quantitatAposta) {
+        this.quantitatAposta = quantitatAposta;
     }
     @Override
     public String toString(){
         return "Aposta{"+
-                "id=" + id +
                 ",nomUsuari=" +nomUsuari + '\'' + 
+                ",quantitatAposta="+ quantitatAposta +  
                 ",enfrontament=" + enfrontament +'\'' +
-                ",resultat=" + resultat + '\''+
-                ",dataPartit="+ dataPartit +
-                ",apostaEconomica="+ apostaEconomica  +    
-                        '}';
+                ",resultatAposta=" + resultatAposta + '\''+
+                "idAposta=" + idAposta +
+                 '}';
     }
 }   

@@ -125,6 +125,12 @@ public void init()throws ServletException{
         request.setAttribute("apuestas",  listaApuestas);
             RequestDispatcher dispatcher = request.getRequestDispatcher("Detallesapuesta.jsp");
             dispatcher.forward(request, response);
+            
+          }else if ("Volver".equals(accion)) {
+            List<Apuesta> listaApuestas = (List<Apuesta>) getServletContext().getAttribute("listaApuestas");
+            request.setAttribute("apuestas", listaApuestas);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("resultat.jsp");
+            dispatcher.forward(request, response);
     }
 
 }

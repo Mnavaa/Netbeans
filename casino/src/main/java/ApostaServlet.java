@@ -143,11 +143,10 @@ public class ApostaServlet extends HttpServlet  {
 
         response.sendRedirect("apostes");
     }
-
-
-
-}
-        
-}
+       private void esborrarAposta(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        int idAposta = Integer.parseInt(request.getParameter("idAposta"));
+        apostaService.esborrarAposta(idAposta);
+        response.sendRedirect("apostes");      
+    }
 
 }

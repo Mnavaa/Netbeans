@@ -103,6 +103,21 @@ public class ApostaServlet extends HttpServlet  {
         RequestDispatcher dispatcher = request.getRequestDispatcher("apostes.jsp");
         dispatcher.forward(request, response);
     }
+    private void mostrarDetall(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int idAposta = Integer.parseInt(request.getParameter("idAposta"));
+        Aposta aposta = apostaService.ObtenirApostaPerId(idAposta);
+        request.setAttribute("aposta", aposta);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("detall.jsp");
+        dispatcher.forward(request, response);
+    }
+       private void filtrarApostes(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String nomUsuari = request.getParameter("nomUsuari");
+        List<Aposta> apostesFiltrades = apostaService.filtrarPerNomUsari(nomUsuari);
+        request.setAttribute("apostes", apostesFiltrades);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("apostes.jsp");
+        dispatcher.forward(request, response);
+    }
+
 
 }
         

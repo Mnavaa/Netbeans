@@ -47,18 +47,6 @@ public class ApostaServlet extends HttpServlet  {
             out.println("</html>");
         }
     }
-@Override
-    rotected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String accio = request.getParameter("accio");
-         if (accio == null || accio.isEmpty()) {
-            llistarApostes(request, response);
-        } else if ("detall".equals(accio)) {
-            mostrarDetall(request, response);
-        } else if ("filtrar".equals(accio)) {
-            filtrarApostes(request, response);
-        }
-        
-    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -72,7 +60,14 @@ public class ApostaServlet extends HttpServlet  {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+            String accio = request.getParameter("accio");
+             if (accio == null || accio.isEmpty()) {
+            llistarApostes(request, response);
+            } else if ("detall".equals(accio)) {
+            mostrarDetall(request, response);
+            } else if ("filtrar".equals(accio)) {
+            filtrarApostes(request, response);
+        }
     }
 
     /**
@@ -87,27 +82,16 @@ public class ApostaServlet extends HttpServlet  {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
        // processRequest(request, response);
-        String accion = request.getParameter("submit");
+        String accion = request.getParameter("accio");
         
-        if("Enviar Apuesta".equals(accion)){
-            List<Aposta> listaAposta = (ArrayList<Aposta>) getServletContext().getAttribute("listaAposta");
-            int ContadorID=(int) (int) getServletContext().getAttribute("ContadorID");
-            apuestaService.addApuesta(listaApuestas, ContadorID, request);
-            getServletContext().setAttribute("ContadorID", ContadorID+1);
-           // ApostaService.addAposta(listaAposta, ContadorID, request);
-           // getServletContext().setAttribuye("ContadorID");
-           
-            request.setAttribute("apuestas", listaApuestas);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("resultat.jsp");
-            dispatcher.forward(request, response);
-        }else if("Borrar".equals(accion)){
-            String ID = request.getParameter("ID");
-            
-            List<Apuesta> listaApuestas = (ArrayList<Apuesta>) getServletContext().getAttribute("listaApuestas");
-            apuestaService.Borrar(listaApuestas, request);
-            request.setAttribute("apuestas",  listaApuestas);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("resultat.jsp");
-            dispatcher.forward(request, respose);    
+        if ("crear".equals(accio)) {
+            crearAposta(request, response);
+        } else if ("modificar".equals(accio)) {
+            modificarAposta(request, response);
+        } else if ("esborrar".equals(accio)) {
+            esborrarAposta(request, response);
+        }
+    }
     /**
      * Returns a short description of the servlet.
      *

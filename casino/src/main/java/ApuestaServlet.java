@@ -106,19 +106,17 @@ public void init()throws ServletException{
             apuestaService.Borrar(listaApuestas, request);
             request.setAttribute("apuestas",  listaApuestas);
             RequestDispatcher dispatcher = request.getRequestDispatcher("resultat.jsp");
-            dispatcher.forward(request, response);
-        }
-        
-    }
-
+            dispatcher.forward(request, respose);    
     /**
      * Returns a short description of the servlet.
      *
      * @return a String containing servlet description
      */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+           }else if("Modificar".equals(accion)){
+        List<Apuesta> listaApuestas = (ArrayList<Apuesta>) getServletContext().getAttribute("listaApuestas");
+        apuestaService.Modificar(listaApuestas, request);
+        request.setAttribute("apuestas",  listaApuestas);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("EditarApuesta.jsp");
+    }
 
 }

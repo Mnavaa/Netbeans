@@ -18,7 +18,18 @@
         <input type="text" id="nomUsuari" name="nomUsuari" required>
         <button type="submit">Filtrar</button>
     </form>
-        
+          <!-- Taula amb el llistat d'apostes -->
+    <table border="1" width="80%">
+        <thead>
+            <tr>
+                <th>Nom d'Usuari</th>
+                <th>Enfrontament</th>
+                <th>Resultat</th>
+                <th>Accions</th>
+            </tr>
+        </thead>
+        <tbody>
+        <% 
         
     </body>
 </html>

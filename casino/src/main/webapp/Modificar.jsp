@@ -21,8 +21,19 @@
      Enfrontament:
             <select id="equipo" name="equipo" required>
                 <option value="Barca-R.Madrid" ${apuesta.equipo == 'Barca-R.Madrid' ? 'selected' : ''}>Barca-R.Madrid</option>
-                <option value="Majorca-Betis" ${apuesta.equipo == 'Majorca-Betis' ? 'selected' : ''}>Mallorca-Betis</option>
-                <option value="Leganes-Alaves" ${apuesta.equipo == 'Leganes-Alaves' ? 'selected' : ''}>Leganes-Alaves</option>
-                <option value="Las Palmas-Getafe" ${apuesta.equipo == 'Las Palmas-Getafe' ? 'selected' : ''}>Las Palmas-Getafe</option>
+                <option value="Majorca-Betis" ${apuesta.equipo == 'Mallorca- Sevilla' ? 'selected' : ''}>Mallorca-Betis</option>
+                <option value="Leganes-Alaves" ${apuesta.equipo == 'Valencia-Atlético' ? 'selected' : ''}>Leganes-Alaves</option>
+                <option value="Las Palmas-Getafe" ${apuesta.equipo == 'Villarreal- Celta' ? 'selected' : ''}>Las Palmas-Getafe</option>
             </select><br/>
             <br/>
+            Resultat Enfrontament:
+            <input type="text" id="Resultat" name="Resultat" value="${apuesta.resultat}" required/><br/>
+            Data del partit:
+            <input type="text" id="fecha_partido" name="fecha_partido" value="${apuesta.fechaPartido}" placeholder="dd-MM-yyyy" required/><br/>
+            Aposta econòmica:
+            <input type="number" id="apuesta" name="apuesta" value="${apuesta.apuesta}" step="0.01" required/><span> €</span><br/>
+            <input type="submit" name="submit" value="Actualizar Apuesta"/>
+</form>
+        
+    </body>
+</html>

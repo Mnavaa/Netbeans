@@ -118,9 +118,12 @@ public class apuestaServlet extends HttpServlet  {
         redirectToPage(request, response, "resultat.jsp");
     }
 
-    private void redirectToPage(HttpServletRequest request, HttpServletResponse response, String editarApuestajsp) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+   private void redirectToPage(HttpServletRequest request, HttpServletResponse response, String page)
+            throws ServletException, IOException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher(page);
+        dispatcher.forward(request, response);
     }
+}
             
             
             /**

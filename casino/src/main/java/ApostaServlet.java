@@ -6,21 +6,24 @@ import Model.Aposta;
 import Model.ApostaService;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 /**
  *
  * @author isard
  */
-@WebServlet(urlPatterns = {"/ApuestaServlet"})
+@WebServlet(urlPatterns = {"/ApostaServlet"})
 public class ApostaServlet extends HttpServlet  {
-    private final ApostaService apostaService = new ApostaService();
+    private ApostaService apostaService = new ApostaService();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -47,7 +50,16 @@ public class ApostaServlet extends HttpServlet  {
             out.println("</html>");
         }
     }
-
+   @Override
+    public void init() throws ServletException {
+        // Inicializar la lista de usuarios en el contexto de la aplicación 
+        List<Aposta> listaApuestas = new ArrayList<>();
+        int ContadorID=0;
+        getServletContext().setAttribute("ContadorID", ContadorID);
+        getServletContext().setAttribute("listaApuestas", listaApuestas);
+        apostaService = new ApostaService();
+    }
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -83,6 +95,7 @@ public class ApostaServlet extends HttpServlet  {
             throws ServletException, IOException {
        // processRequest(request, response);
         String accion = request.getParameter("accio");
+        Object accio = null;
         
         if ("crear".equals(accio)) {
             crearAposta(request, response);
@@ -130,7 +143,7 @@ public class ApostaServlet extends HttpServlet  {
 
         response.sendRedirect("apostes");
     }
-       rivate void modificarAposta(HttpServletRequest request, HttpServletResponse response) throws IOException {
+       private void modificarAposta(HttpServletRequest request, HttpServletResponse response) throws IOException {
         int idAposta = Integer.parseInt(request.getParameter("idAposta"));
         String nomUsuari = request.getParameter("nomUsuari");
         String enfrontament = request.getParameter("enfrontament");

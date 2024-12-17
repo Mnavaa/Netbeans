@@ -3,11 +3,9 @@
     Created on : 22 de nov. 2024, 17:02:04
     Author     : isard
 --%>
-<%@ page import="java.util.List" %>
-<%@ page import="Model.Aposta" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="Model.Aposta" %>
-
+<!DOCTYPE html>
+<html>
 <head
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Llistat d'Apostes</title>
@@ -25,16 +23,10 @@
                 <option value="Villarreal-Celta">Villarreal vs Celta</option>
             </select>
             <br/>
-            
-            Resultat del Partit: <input type="text" name="resultat" placeholder="Ex: 2-1" required/><br/>
-            
-           
-            Data del Matx: <input type="text" name="data" placeholder="dd-MM-yyyy" required/><br/>
-            
-            
-            Import de l'Aposta: <input type="number" name="import" step="0.01" required/><span>€</span><br/>
-            
-            <input type="submit" name="submit" value="Registrar Aposta"/>
+              Resultat Enfrentament: <input type="text" name="Resultat" required/><br/>
+            Data del partit: <input type="text" name="fecha_partido" placeholder="dd-MM-yyyy"required /><br/>
+            Aposta econòmica: <input type="number" name="apuesta" step="0.01" required/><span>€</span><br/>
+            <input type="submit" name="submit" value="Enviar Apuesta"/>
         </form>
     </body>
 </html>

@@ -101,62 +101,50 @@ public class ApostaServlet extends HttpServlet  {
             dispatcher.forward(request, response);
         }else if("Borrar".equals(accion)){
             String ID = request.getParameter("ID");
-    }
-    /**
+            
+            List<Aposta> listApostas = (ArrayList<Aposta>) getServletContext().getAttribute("listaApostas");
+            apostaService.Borrar(listApostas, request);
+            request.setAttribute("apuestas",  listApostas);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("resultat.jsp");
+            dispatcher.forward(request, response);
+            
+        }else if("Modificar".equals(accion)){
+        List<Aposta> listaApostas = (ArrayList<Aposta>) getServletContext().getAttribute("listaApostas");
+        apostaService.Modificar(listaApostas, request);
+        request.setAttribute("apuestas",  listaApostas);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("EditarApuesta.jsp");
+            dispatcher.forward(request, response);
+        }else if("Detalles".equals(accion)){
+        List<Aposta> listaApuestas = (ArrayList<Aposta>) getServletContext().getAttribute("listaApostas");
+        apostaService.Mostrar(listaApuestas, request);
+        request.setAttribute("apuestas",  listaApuestas);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("Detallesapuesta.jsp");
+            dispatcher.forward(request, response);
+         }else if ("Volver".equals(accion)) {
+            List<Apuesta> listaApuestas = (List<Apuesta>) getServletContext().getAttribute("listaApuestas");
+            request.setAttribute("apuestas", listaApuestas);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("resultat.jsp");
+            dispatcher.forward(request, response);
+    }else if ("Actualizar Apuesta".equals(accion)) {
+            List<Apuesta> listaApuestas = (List<Apuesta>) getServletContext().getAttribute("listaApuestas");
+            request.setAttribute("apuestas", listaApuestas);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("resultat.jsp");
+            dispatcher.forward(request, response);
+} else if ("FiltrarPorUsuario".equals(request.getParameter("accion"))) {   
+     List<Apuesta> listaApuestas = (List<Apuesta>) getServletContext().getAttribute("listaApuestas");
+    List<Apuesta> listaFiltrada = apuestaService.filtrarPorUsuario(listaApuestas, request);
+    request.setAttribute("apuestas", listaFiltrada);
+    RequestDispatcher dispatcher = request.getRequestDispatcher("apuestafiltrada.jsp");
+    dispatcher.forward(request, response);
+}
+}}
+            
+            
+            
+            /**
      * Returns a short description of the servlet.
      *
      * @return a String containing servlet description
      */
-   private void llistarApostes(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Aposta> apostes = apostaService.ObtenirTotesLesApostes();
-        request.setAttribute("apostes", apostes);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("apostes.jsp");
-        dispatcher.forward(request, response);
-    }
-    private void mostrarDetall(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int idAposta = Integer.parseInt(request.getParameter("idAposta"));
-        Aposta aposta = apostaService.ObtenirApostaPerId(idAposta);
-        request.setAttribute("aposta", aposta);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("detall.jsp");
-        dispatcher.forward(request, response);
-    }
-       private void filtrarApostes(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String nomUsuari = request.getParameter("nomUsuari");
-        List<Aposta> apostesFiltrades = apostaService.filtrarPerNomUsari(nomUsuari);
-        request.setAttribute("apostes", apostesFiltrades);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("apostes.jsp");
-        dispatcher.forward(request, response);
-    }
-       private void crearAposta(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        int idAposta = Integer.parseInt(request.getParameter("idAposta"));
-        String nomUsuari = request.getParameter("nomUsuari");
-        String enfrontament = request.getParameter("enfrontament");
-        String resultatAposta = request.getParameter("resultatAposta");
-        LocalDate dataPartit = LocalDate.parse(request.getParameter("dataPartit"));
-        double quantitatAposta = Double.parseDouble(request.getParameter("quantitatAposta"));
+  
 
-        Aposta novaAposta = new Aposta(nomUsuari, idAposta, enfrontament, resultatAposta, java.sql.Date.valueOf(dataPartit), quantitatAposta);
-        apostaService.afegirAposta(novaAposta);
-
-        response.sendRedirect("apostes");
-    }
-       private void modificarAposta(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        int idAposta = Integer.parseInt(request.getParameter("idAposta"));
-        String nomUsuari = request.getParameter("nomUsuari");
-        String enfrontament = request.getParameter("enfrontament");
-        String resultatAposta = request.getParameter("resultatAposta");
-        LocalDate dataPartit = LocalDate.parse(request.getParameter("dataPartit"));
-        double quantitatAposta = Double.parseDouble(request.getParameter("quantitatAposta"));
-
-        Aposta apostaActualitzada = new Aposta(nomUsuari, idAposta, enfrontament, resultatAposta, java.sql.Date.valueOf(dataPartit), quantitatAposta);
-        apostaService.modificarAposta(apostaActualitzada);
-
-        response.sendRedirect("apostes");
-    }
-       private void esborrarAposta(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        int idAposta = Integer.parseInt(request.getParameter("idAposta"));
-        apostaService.esborrarAposta(idAposta);
-        response.sendRedirect("apostes");      
-    }
-
-}

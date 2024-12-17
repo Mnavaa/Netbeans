@@ -28,76 +28,51 @@ public class Apuesta {
         this.fecha_partido = fecha_partido;
         this.apuesta = apuesta;
     }
-    public int getIdAposta(){
-        return idAposta;
-    }
-    public void setIdAposta(int idAposta){
-        this.idAposta = idAposta;
-    }
-    public String getNomUsuari(){
-        return nomUsuari;
-        
-    }
-    public void setNomUsuari(String nomUsuari){
-        this.nomUsuari = nomUsuari;
-    }
-    public String getEnfrontament(){
-        return enfrontament;
-    }
-    public void setEnfrontament(String enfrontament){
-        this.enfrontament = enfrontament;
-    }
-    public String getResultatAposta(){
-        return resultatAposta;
-    }
-    public void setResultatAposta(String resultatAposta){
-       this.resultatAposta = resultatAposta; 
-    }
-    public Date getDataPartit(){
-        return dataPartit;
-    }
-    public void setDataPartit(Date dataPartit){
-        this.dataPartit = dataPartit;
-    }
-     public double getQuantitatApostada() {
-        return quantitatAposta;
+     public int getID() {
+        return ID;
     }
 
-    public void setQuantitatApostada(double quantitatAposta) {
-        this.quantitatAposta = quantitatAposta;
-    }
-    @Override
-    public String toString(){
-        return "Aposta{"+
-                ",nomUsuari=" +nomUsuari + '\'' + 
-                ",quantitatAposta="+ quantitatAposta +  
-                ",enfrontament=" + enfrontament +'\'' +
-                ",resultatAposta=" + resultatAposta + '\''+
-                "idAposta=" + idAposta +
-                 '}';
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
-    int getID() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public String getNombre() {
+        return nombre;
     }
 
-    void setNombre(String parameter) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    void setEquipo(String parameter) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public String getEquipo() {
+        return equipo;
     }
 
-    void setResultat(String parameter) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void setEquipo(String equipo) {
+        this.equipo = equipo;
     }
 
-    void setFecha_partido(LocalDate parse) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public String getResultat() {
+        return resultat;
     }
 
-    void setApuesta(double parseDouble) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void setResultat(String resultat) {
+        this.resultat = resultat;
     }
-}   
+
+    public LocalDate getFecha_partido() {
+        return fecha_partido;
+    }
+
+    public void setFecha_partido(LocalDate fecha_partido) {
+        this.fecha_partido = fecha_partido;
+    }
+
+    public double getApuesta() {
+        return apuesta;
+    }
+
+    public void setApuesta(double apuesta) {
+        this.apuesta = apuesta;
+    }
+}

@@ -69,17 +69,10 @@ public class ApostaServlet extends HttpServlet  {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @Override
+  @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            String accio = request.getParameter("accio");
-             if (accio == null || accio.isEmpty()) {
-            llistarApostes(request, response);
-            } else if ("detall".equals(accio)) {
-            mostrarDetall(request, response);
-            } else if ("filtrar".equals(accio)) {
-            filtrarApostes(request, response);
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -93,17 +86,21 @@ public class ApostaServlet extends HttpServlet  {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       // processRequest(request, response);
-        String accion = request.getParameter("accio");
-        Object accio = null;
+        processRequest(request, response);
+        String accion = request.getParameter("submit");
+      
         
-        if ("crear".equals(accio)) {
-            crearAposta(request, response);
-        } else if ("modificar".equals(accio)) {
-            modificarAposta(request, response);
-        } else if ("esborrar".equals(accio)) {
-            esborrarAposta(request, response);
-        }
+        if ("Enviar Apuesta".equals(accion)) {
+           List<Aposta> listaApostas = (ArrayList<Aposta>) getServletContext().getAttribute("listaApostas");
+           int ContadorID= (int)
+            getServletContext().getAttribute("ContadorID");
+            apostaService.addAposta(listaApostas, ContadorID, request);
+            getServletContext().setAttribute("ContadorID", ContadorID+1);
+            request.setAttribute("apuestas", listaApostas);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("resultat.jsp");
+            dispatcher.forward(request, response);
+        }else if("Borrar".equals(accion)){
+            String ID = request.getParameter("ID");
     }
     /**
      * Returns a short description of the servlet.

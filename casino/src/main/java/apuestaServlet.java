@@ -56,16 +56,7 @@ public class apuestaServlet extends HttpServlet  {
             out.println("</html>");
         }
     }
-   @Override
-    public void init() throws ServletException {
-        // Inicializar la lista de usuarios en el contexto de la aplicación 
-        List<Apuesta> listaApuestas = new ArrayList<>();
-        int ContadorID=0;
-        getServletContext().setAttribute("ContadorID", ContadorID);
-        getServletContext().setAttribute("listaApuestas", listaApuestas);
-        apostaService = new ApuestaService();
-    }
-    
+ 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -90,60 +81,17 @@ public class apuestaServlet extends HttpServlet  {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String accion = request.getParameter("submit");
-      
-        
-        if ("Enviar Apuesta".equals(accion)) {
-           List<Apuesta> listaApostas = (ArrayList<Apuesta>) getServletContext().getAttribute("listaApostas");
-           int ContadorID= (int)
-            getServletContext().getAttribute("ContadorID");
-            apostaService.addAposta(listaApostas, ContadorID, request);
-            getServletContext().setAttribute("ContadorID", ContadorID+1);
-            request.setAttribute("apuestas", listaApostas);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("resultat.jsp");
-            dispatcher.forward(request, response);
-        }else if("Borrar".equals(accion)){
-            String ID = request.getParameter("ID");
-            
-            List<Apuesta> listApostas = (ArrayList<Apuesta>) getServletContext().getAttribute("listaApostas");
-            apostaService.Borrar(listApostas, request);
-            request.setAttribute("apuestas",  listApostas);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("resultat.jsp");
-            dispatcher.forward(request, response);
-            
-        }else if("Modificar".equals(accion)){
-        List<Apuesta> listaApostas = (ArrayList<Apuesta>) getServletContext().getAttribute("listaApostas");
-        apostaService.Modificar(listaApostas, request);
-        request.setAttribute("apostas",  listaApostas);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("EditarApuesta.jsp");
-            dispatcher.forward(request, response);
-        }else if("Detalles".equals(accion)){
-        List<Apuesta> listaApuestas = (ArrayList<Apuesta>) getServletContext().getAttribute("listaApostas");
-        apostaService.Mostrar(listaApuestas, request);
-        request.setAttribute("apostas",  listaApuestas);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("Detallesapuesta.jsp");
-            dispatcher.forward(request, response);
-         }else if ("Volver".equals(accion)) {
-            List<Apuesta> listaApuestas = (List<Apuesta>) getServletContext().getAttribute("listaAposta");
-            request.setAttribute("apostas", listaApuestas);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("resultat.jsp");
-            dispatcher.forward(request, response);
-    }else if ("Actualizar Apuesta".equals(accion)) {
-            List<Apuesta> listaApuestas = (List<Apuesta>) getServletContext().getAttribute("listaAposta");
-            request.setAttribute("apostas", listaApuestas);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("resultat.jsp");
-            dispatcher.forward(request, response);
-} else if ("FiltrarPorUsuario".equals(request.getParameter("accion"))) {   
-     List<Apuesta> listaApostas = (List<Apuesta>) getServletContext().getAttribute("listaAposta");
-    List<Apuesta> listaFiltrada = apostaService.filtrarPorUsuario(listaApostas, request);
-    request.setAttribute("apostas", listaFiltrada);
-    RequestDispatcher dispatcher = request.getRequestDispatcher("apostastafiltrada.jsp");
-    dispatcher.forward(request, response);
-}
-}}
+        List<Apuesta> listaApuestas = (List<Apuesta>) getServletContext().getAttribute("listaApuestas");
+        int contadorID = (int) getServletContext().getAttribute("ContadorID");
+
+        switch (accion) {
+            case "Enviar Apuesta":
+                apuestaService.addApuesta(listaApuestas, contadorID, request);
+                getServletContext().setAttribute("ContadorID", contadorID + 1);
+          
             
             
             

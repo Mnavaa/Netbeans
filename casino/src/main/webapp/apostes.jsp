@@ -25,3 +25,16 @@
                 <option value="Villarreal-Celta">Villarreal vs Celta</option>
             </select>
             <br/>
+            
+            Resultat del Partit: <input type="text" name="resultat" placeholder="Ex: 2-1" required/><br/>
+            
+           
+            Data del Matx: <input type="text" name="data" placeholder="dd-MM-yyyy" required/><br/>
+            
+            
+            Import de l'Aposta: <input type="number" name="import" step="0.01" required/><span>€</span><br/>
+            
+            <input type="submit" name="submit" value="Registrar Aposta"/>
+        </form>
+    </body>
+</html>

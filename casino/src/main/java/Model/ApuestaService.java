@@ -45,3 +45,20 @@ public class ApuestaService {
             }
         }
     }
+    public void Modificar(List<Apuesta> listaApuestas, HttpServletRequest request) {
+        int ID = Integer.parseInt(request.getParameter("ID"));
+        for (Apuesta aposta : listaApuestas) {
+            if (aposta.getID() == ID) {
+                aposta.setNombre(request.getParameter("nombre"));
+                aposta.setEquipo(request.getParameter("equipo"));
+                aposta.setResultat(request.getParameter("Resultat"));
+
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                aposta.setFecha_partido(LocalDate.parse(request.getParameter("fecha_partido"), formatter));
+
+                aposta.setApuesta(Double.parseDouble(request.getParameter("apuesta")));
+                break;
+            }
+        }
+    }
+}

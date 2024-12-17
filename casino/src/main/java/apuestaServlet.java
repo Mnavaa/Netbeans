@@ -2,6 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
+import Model.Apuesta;
 import Model.ApuestaService;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -80,7 +81,7 @@ public class apuestaServlet extends HttpServlet  {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @Override
+  
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String accion = request.getParameter("submit");
@@ -92,7 +93,34 @@ public class apuestaServlet extends HttpServlet  {
                 apuestaService.addApuesta(listaApuestas, contadorID, request);
                 getServletContext().setAttribute("ContadorID", contadorID + 1);
           
-            
+             break;
+
+            case "Borrar":
+                apuestaService.Borrar(listaApuestas, request);
+                break;
+
+            case "Modificar":
+                apuestaService.Mostrar(listaApuestas, request);
+                redirectToPage(request, response, "EditarApuesta.jsp");
+                return;
+
+            case "Detalles":
+                apuestaService.Mostrar(listaApuestas, request);
+                redirectToPage(request, response, "DetallesApuesta.jsp");
+                return;
+
+            case "Actualizar Apuesta":
+                apuestaService.Modificar(listaApuestas, request);
+                break;
+        }
+
+        request.setAttribute("apuestas", listaApuestas);
+        redirectToPage(request, response, "resultat.jsp");
+    }
+
+    private void redirectToPage(HttpServletRequest request, HttpServletResponse response, String editarApuestajsp) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
             
             
             /**

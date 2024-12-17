@@ -18,4 +18,11 @@
             Usuario:
                 <input type="text" id="usuario" name="usuario" value="${apuesta.Nombre}"><br>
             
-     
+     Enfrontament:
+            <select id="equipo" name="equipo" required>
+                <option value="Barca-R.Madrid" ${apuesta.equipo == 'Barca-R.Madrid' ? 'selected' : ''}>Barca-R.Madrid</option>
+                <option value="Majorca-Betis" ${apuesta.equipo == 'Majorca-Betis' ? 'selected' : ''}>Mallorca-Betis</option>
+                <option value="Leganes-Alaves" ${apuesta.equipo == 'Leganes-Alaves' ? 'selected' : ''}>Leganes-Alaves</option>
+                <option value="Las Palmas-Getafe" ${apuesta.equipo == 'Las Palmas-Getafe' ? 'selected' : ''}>Las Palmas-Getafe</option>
+            </select><br/>
+            <br/>
